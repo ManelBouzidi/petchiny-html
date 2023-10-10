@@ -1,0 +1,170 @@
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#a{
+font-style: oblique;
+text-align: center;
+background-color: rgb(161, 90, 48);
+height: 60px; ;
+border-radius: 20px;
+margin-bottom: 20px;
+}
+#name{
+  padding-top: 10px;
+}
+
+#e{
+width:1000px;
+margin-left: 160px;  
+margin-top: 10px;
+height: 280px;
+}
+#r{
+  width: 500px;
+  margin-top: 10px;
+}
+
+.nav{
+  overflow: hidden;
+  background-color: burlywood;
+}
+.nav a:hover{
+  background-color: rgb(202, 142, 107);
+}
+
+.search-container{
+  float: right;
+  margin-top: 10px;
+  margin-right: 530px;
+
+}
+
+.search-input{
+  width:300px;
+  height: 30px;
+  border-radius: 30px;
+  border-color: bisque;
+  border: none;
+  padding: 4px 24px;
+}
+
+
+.nav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 20px 30px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#i {
+  width: 300px;
+}
+
+#ch{
+  width: 300px;
+}
+#miss{
+  width: 300px;
+}
+#y{
+  width: 300px;
+  margin-left: 50px;
+}
+#c{
+  width: 300px;
+}
+#x{
+  width:300px;
+}
+
+#s{
+  width: 300px;
+margin-left: 30px;
+
+}
+
+#w{
+  width: 300px;
+  margin-left: 60px;
+}
+
+.fa-shopping-cart{
+  position: absolute;
+  font-size: small;
+  right: 50px;
+  padding-top: 20px;
+}
+
+.fa-heart{
+  position: absolute;
+  font-size: small;
+  right: 100px;
+  padding-top: 20px;
+}
+
+.slider-button{
+  position: absolute;
+  top: 110px;
+  border: none;
+  background: #deb887;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 30px;
+}
+#next{
+  right: 30px;
+}
+#prev{
+  left: 30px;
+}
+.icons{
+  position: absolute;
+  right: 100px;
+  top:20px;
+  font-size: 20px
+}
+.fa{
+  margin-right: 20px
+}
+
+.buybutton{
+  border: none;
+  background: #deb887;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.image{
+  width: 220px;
+}
+.perfume{
+  width: 250px;
+  display: inline-block;
+  margin-right: 50px;
+  margin-bottom: 40px;
+}
+.perfumes{
+  margin-left: 80px;
+}
+.filters{
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.filter{
+  border:none;
+  padding: 16px;
+  background: burlywood;
+  border-radius: 18px;
+  margin-right: 20px;
+  font-size: 16px;
+}
