@@ -15,6 +15,7 @@ function each(array, func) {
   function filter(array, predicate) {
   var acc = [];
   each(array, function (element, index) {
+
    if (predicate(element, index)) {
     
      acc.push(element);
@@ -33,7 +34,7 @@ function each(array, func) {
   });
   return acc;
   }
-
+/////////////////////////////////////////////////////////
 function generateID() {
     var count = 0;
     return function () {
@@ -42,7 +43,7 @@ function generateID() {
   }
 var id = generateID();
 
-function makePerfume(price,name,image,category){
+function makePet(price,name,image,category){
     return{
       price:price,
       name:name,
@@ -65,7 +66,7 @@ return {
     }
 }
 var add=function(price,name,image,category){
-    var item=makePerfume(price,name,image,category)
+    var item=makePet(price,name,image,category)
     this.list.push(item)
 }
 var removeElement=function(id){
@@ -97,84 +98,140 @@ var sortByPriceExpensive=function(){
     })
 }
 
-var shop=MakeShop("manel")
+// create shop
+var shop=MakeShop("petchiny")
 
 
-shop.add(118,"Idole","images/idole.jpg","women")
-shop.add(130,"miss Dior","images/missd.jpg","women")
-shop.add(194,"Libre","images/libre.webp","women")
-shop.add(165,"Coco chanel","images/coco.jpg","women")
-shop.add(98,"Jimmy choo","images/jimmy.webp","men")
-shop.add(109,"Eternity","images/eternity.webp","men")
-shop.add(115,"Sauvage","images/sauvage.jpg","men")
-shop.add(148,"Yves","images/yves.jpeg","men")
+//add pets to shop
+shop.add(150, "Chester", "images/pet1.jpg", "Cat")
+shop.add(150, "Rex", "images/pet2.jpg", "Dog")
+shop.add(75, "Romana", "images/pet3.jpg", "Cat")
+shop.add(50, "sad hamster", "images/pet4.jpg", "Hamster")
+shop.add(120, "tiwtiw", "images/pet5.jpg", "Bird")
+shop.add(200, "slither", "images/pet6.jpg", "Snake")
+shop.add(130, "Bobby", "images/pet7.jpg", "Dog")
+shop.add(90, "mittens", "images/pet8.jpg", "Cat")
+shop.add(45, "fuzzy", "images/pet9.jpg", "Hamster")
+shop.add(110, "tweetie", "images/pet10.jpg", "Bird")
+shop.add(180, "cobra", "images/pet11.jpg", "Snake")
+shop.add(140, "max", "images/pet12.jpg", "Dog")
+shop.add(80, "shadow", "images/pet13.jpg", "Cat")
+shop.add(55, "squeaky", "images/pet14.jpg", "Hamster")
+shop.add(210, "python", "images/pet15.jpg", "Snake")
 
+console.log(shop.list)
 
+//display single pets
 function display(item){
-$('.perfumes').append(
-`<div class="perfume">
+$('.pets').append(
+`<div class="pet">
 <img src=${item.image} class="image">
 <h3>${item.name}</h3>
-<p>Price : ${item.price}$</p>
+<p>Price : ${item.price}DT</p>
+<p>Type : ${item.category}</p>
+<button class="adoptbutton">Adopt</button>
 </div>`
 )}
 
+// display all pets in html
 each(shop.list,function(e,i){
+    console.log(e);
     display(e)
 })
 
-
+//filters
+//sort by cheapest
 $("#sortcheap").click(function(){
-    shop.sortByPriceCheapest();
-    
-    $(".perfumes").html("");
-   
+    shop.sortByPriceCheapest(); 
+    //empty pet first
+    $(".pets").html("");
+    //display again
     each(shop.list,function(e,i){
         display(e)
     })
 })
 
-
+//sort by expensive
 $("#sortexp").click(function(){
     shop.sortByPriceExpensive();
-    $(".perfumes").html("");
-    
+    //empty pets first 
+    $(".pets").html("");
+    //display again
     each(shop.list,function(e,i){
         display(e)
     })
 })
 
-$("#women").click(function(){
-    shop.categoryFilter("women");
-    
-    $(".perfumes").html("");
-   
+$("#cats").click(function(){
+    shop.categoryFilter("Cat");
+    //empty pets first
+    $(".pets").html("");
+    //display again
     each(shop.list,function(e,i){
-        display(e)
+        display(e)    
+    })
+})
+
+$("#dogs").click(function(){
+    shop.categoryFilter("Dog");
+    //empty pets first
+    $(".pets").html("");
+    //display again
+    each(shop.list,function(e,i){
+        display(e)    
     })
 })
 
 
-
-var images = ['images/goodgirlll.png','images/badboy.webp','images/depp.jpg','images/dior.jpg',]
+//slider
+var images = ['images/slider/dog-pink.jpeg','images/slider/dog-blue.jpg','images/slider/0.jpg','images/slider/1.jpg','images/slider/2.jpg','images/slider/3.jpg','images/slider/4.jpg','images/slider/5.jpg','images/slider/6.jpg','images/slider/7.jpg','images/slider/8.jpg']
 var index = 0;
+// show first image first time 
 $("#slider").html('<img id="e" src="'+images[index]+'">');
 
-
+//change to previous image
 $("#prev").click(function(){
     if (index > 0) {
         index--
-        
+        // $("#slider").html('<img id="e" src="'+images[index]+'">');
         $("#slider").html(`<img id="e" src="${images[index]}">`);
     }
 });
 
-
+//change to next image
 $("#next").click(function(){
     if (index < images.length - 1) {
         index++
+        $("#slider").html('<img id="e" src="'+images[index]+'">');
+    }else{
+        index = 0;
         $("#slider").html('<img id="e" src="'+images[index]+'">');
     }
 });
 
 
+
+
+/// match script ////
+
+$('#findPet').click(function() {
+    var traits = $('#personality').val().toLowerCase();
+    var pet = getPetRecommendation(traits);
+    $('#result').text("Your matching pet is: " + pet);
+});
+
+function getPetRecommendation(traits) {
+    if (traits.includes('loyal') || traits.includes('funny')) {
+        return 'a dog';
+    } else if (traits.includes('independent') || traits.includes('graceful')) {
+        return 'a cat';
+    } else if (traits.includes('sweet') || traits.includes('cute')) {
+        return 'a hamster';
+    } else if (traits.includes('unique') || traits.includes('calm')) {
+        return 'a snake';
+    } else if (traits.includes('cheerful') || traits.includes('talkative')) {
+        return 'a bird';
+    } else {
+        return 'another type of pet!';
+    }
+}
